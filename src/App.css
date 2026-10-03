@@ -1,10 +1,10 @@
 :root {
-  --bg: #f3f2ef;
+  --bg: #f2f3f5;
   --card: #ffffff;
-  --text: #16181c;
+  --text: #1a1c1f;
   --text-muted: #5b6069;
   --accent: #2f6fed;
-  --border: #d8d6d0;
+  --border: #e1e3e7;
   --max-width: 1100px;
 }
 
@@ -12,7 +12,10 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(90deg, rgba(120,190,255,0.5) 0%, rgba(120,190,255,0.14) 45%, rgba(120,190,255,0.14) 55%, rgba(120,190,255,0.5) 100%);
+  background-attachment: fixed;
   color: var(--text);
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
@@ -93,6 +96,16 @@ main {
   gap: 3rem;
 }
 
+.hero-photo {
+  flex-shrink: 0;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid var(--card);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+}
+
 .hero-photo.placeholder {
   flex-shrink: 0;
   width: 220px;
@@ -101,24 +114,13 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #1e2126;
-  color: #fff;
+  background: var(--accent);
+  color: #ffffff;
   font-size: 3.8rem;
   font-weight: 800;
   border: 6px solid var(--card);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.1), 0 0 60px 10px rgba(47,111,237,0.45);
 }
-
-.hero-photo {
-  width: 220px;
-  height: 220px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 6px solid var(--card);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.1);
-  flex-shrink: 0;
-}
-
 .hero-copy h1 {
   font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 800;
@@ -149,16 +151,35 @@ main {
   font-weight: 700;
   font-size: 0.9rem;
   text-decoration: none;
-  color: #16181c;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.quick-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.12); }
+.quick-pill:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,0.3); }
 
-.pill-a { background: #b7d84a; }
-.pill-b { background: #f0a83c; }
-.pill-c { background: #6fd3d9; }
-.pill-d { background: #c9c9c9; }
+.pill-primary {
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 0.75rem 1.8rem;
+}
+
+.pill-secondary {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  font-weight: 600;
+}
+
+.pill-secondary:hover { color: var(--text); border-color: var(--accent); }
+
+.pill-tertiary {
+  background: rgba(47,111,237,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(47,111,237,0.35);
+  font-weight: 700;
+}
+
+.pill-tertiary:hover { background: rgba(47,111,237,0.18); }
 
 /* Footer socials */
 .social-pill {
@@ -203,6 +224,7 @@ main {
 }
 
 .about h2, .skills h2, .projects h2 { margin: 0 0 1.5rem; font-size: 2rem; }
+.about-lead { font-size: 1.15rem; font-weight: 600; color: var(--text); max-width: 60ch; margin: 0 0 1rem; }
 .about p { color: var(--text-muted); max-width: 65ch; }
 
 /* Skills */
@@ -324,18 +346,114 @@ main {
   }
   .nav-links.open { display: flex; }
 }
-.about-lead { font-size: 1.15rem; font-weight: 600; color: var(--text); max-width: 60ch; margin: 0 0 1rem; }
+body {
+  margin: 0; /* removes the browser's default spacing around the page edges */
+  background-color: var(--bg); /* the solid grey showing everywhere the glow doesn't reach */
 
-.hero h1 {
-  font-size: clamp(2.2rem, 5vw, 3.2rem);
-  font-weight: 800;
-  margin: 0 0 0.25rem;
+  background-image:
+    /* each radial-gradient() below draws ONE soft circle of light.
+       "circle at X% Y%" = where the center of that circle sits,
+       measured as a percentage across the page's width (X) and height (Y).
+       The color fades from solid at the center to fully see-through ("transparent")
+       by the distance given (e.g. 28%) */
+
+    radial-gradient(circle at 0% 8%, rgba(120,190,255,0.4), transparent 28%),
+    /* 0% = far left edge, 8% = near the very top → glow spot near the hero, left side */
+
+    radial-gradient(circle at 100% 22%, rgba(120,190,255,0.3), transparent 30%),
+    /* 100% = far right edge, 22% = a bit further down → glow spot, right side */
+
+    radial-gradient(circle at 0% 45%, rgba(120,190,255,0.3), transparent 28%),
+    /* left side again, roughly halfway down the page */
+
+    radial-gradient(circle at 100% 65%, rgba(120,190,255,0.3), transparent 30%),
+    /* right side, further down still — around where Projects sits */
+
+    radial-gradient(circle at 0% 88%, rgba(120,190,255,0.35), transparent 28%);
+    /* left side, near the bottom — around the footer */
+
+  background-attachment: scroll;
+  /* "scroll" means this background moves WITH the page content as you scroll,
+     and the percentages above are measured against the FULL page height —
+     not just what's visible on screen. This is what makes the glow spots
+     show up at different points as you scroll down, instead of staying
+     stuck to the same spot on your screen. */
+
+  color: var(--text); /* default text color for the whole page */
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; /* font stack: tries each font left to right until one is available */
+  line-height: 1.6; /* spacing between lines of text, for readability */
+}
+.project-card {
+  position: relative;
+  /* REQUIRED for the ::before trick below to work. It tells the browser
+     "anything inside this card that's positioned absolutely should be
+     measured relative to THIS card's edges, not the whole page." */
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.75rem;
+  text-decoration: none;
   color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  overflow: hidden;
+  /* Without this, the top accent strip (added below) would have sharp
+     square corners even though the card itself has rounded corners.
+     "overflow: hidden" clips anything inside the card to match its
+     own rounded shape. */
 }
 
-.hero h2 {
-  font-size: clamp(1.25rem, 4vw, 2.5rem);
-  font-weight: 700;
-  margin: 0 0 0.25rem;
-  color: var(--text);
+.project-card::before {
+  /* ::before creates an invisible "fake" element glued to the start of
+     this card's content — we're using it purely as a decoration,
+     not for any real text or image. */
+
+  content: "";
+  /* Required for ::before to render at all — even if you don't want
+     any actual text inside it, you must set content to an empty string. */
+
+  position: absolute;
+  /* Pulls this strip out of the normal flow so it can sit exactly where
+     we place it, layered on top of the card. */
+
+  top: 0; left: 0; right: 0;
+  /* Pins the strip to the very top of the card, and stretches it
+     from the card's left edge all the way to its right edge. */
+
+  height: 4px;
+  /* How thick the colored strip is. */
+
+  background: linear-gradient(90deg, var(--accent), rgba(120,190,255,0.3));
+  /* linear-gradient(90deg, ...) draws a smooth color transition
+     left-to-right (90 degrees = horizontal). It starts as your solid
+     accent blue on the left and fades to a lighter, more transparent
+     blue by the right edge. */
+}
+.mini-card {
+  position: relative; /* same reason as above — anchors the ::before strip to this card */
+
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  overflow: hidden; /* clips the strip to the card's rounded corners */
+}
+
+.mini-card::before {
+  content: ""; /* required, even though it's empty */
+  position: absolute;
+  top: 0; left: 0; right: 0; /* stretch across the top edge */
+  height: 3px; /* thinner than the main project cards — these are "smaller" builds, so a quieter accent fits */
+  background: rgba(47,111,237,0.5);
+  /* a flat semi-transparent blue, rather than a gradient —
+     keeps mini-cards visually "one step down" from the main Projects cards */
 }

@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import About from './components/About'
 import './App.css'
 
 const skills = {
-  Languages: ['JavaScript', 'Python', 'Java', 'PHP', 'C++', 'SQL', 'Dart'],
+  Languages: ['JavaScript', 'TypeScript', 'Python', 'Java', 'PHP', 'C', 'C++', 'SQL', 'Dart', 'HTML/CSS'],
   'Frameworks & Tools': ['React', 'Flutter', 'Node.js', 'AWS', 'Git', 'Bash', 'XAMPP/MySQL'],
-  'Core Concepts': ['OOP & UML Design', 'Automata Theory', 'Networking Fundamentals', 'Cloud Architecture'],
+  'Core Concepts': ['OOP & UML Design', 'Fundamental Software Engineering', 'Networking Fundamentals', 'Cloud Architecture'],
 }
 
 const projects = [
@@ -51,7 +52,7 @@ function App() {
         <div className="badge-row">
           <span className="badge"><span className="dot"></span> Open to opportunities</span>
           <span className="badge badge-muted">📍 Ghana</span>
-          <span className="badge badge-muted">🎓 Level 200</span>
+          <span className="badge badge-muted">🎓 Level 300</span>
         </div>
         <button
           className="nav-toggle"
@@ -72,47 +73,26 @@ function App() {
       <main>
         <section id="hero" className="hero">
           <div className="hero-flex">
-            {/* Swap this div for: <img src={photo} alt="Lemy" className="hero-photo" /> */}
+            {/* Swap this div for: <img src={photo} alt="Lemuel Bulla" className="hero-photo" /> */}
             <div className="hero-photo placeholder">LB</div>
             <div className="hero-copy">
               <h1>Lemuel Bulla</h1>
-              <p className="hero-role">Software Developer , CS Student & Innovator</p>
+              <p className="hero-role">Software Developer, CS Student &amp; Innovator</p>
               <p className="hero-blurb">
-                Currently sharpening my craft through coursework at GCTU and
-                hands-on training with ERA Technologies — I like building things
-                that actually work, then figuring out how to make them better.
+                Hello there! My name is Lemuel Bulla, a CS student, tech enthusiast
+                as well as a junior software developer, and welcome to my portfolio website.
               </p>
               <div className="quick-links">
-                <a href="#about" className="quick-pill pill-a">About</a>
-                <a href="#skills" className="quick-pill pill-b">Skills</a>
-                <a href="#projects" className="quick-pill pill-c">Projects</a>
-                <a href="#mini-projects" className="quick-pill pill-d">Mini Projects</a>
+                <a href="#about" className="quick-pill pill-primary">About Me</a>
+                <a href="#projects" className="quick-pill pill-tertiary">Projects</a>
+                <a href="#skills" className="quick-pill pill-secondary">Skills</a>
+                <a href="#mini-projects" className="quick-pill pill-secondary">Mini Projects</a>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="about">
-          <p className="section-label">01 — About</p>
-          <h2>About me</h2>
-          <p className="about-lead">
-            I turn complex ideas into clean, working software — and I'm just getting started.
-          </p>
-          <p>
-            I'm a Level 200 Computer Science student at Ghana Communication Technology
-            University, building on a strong foundation in object-oriented design and
-            notable skills in problem-solving and systems thinking, alongside hands-on
-            training in the ERA Technologies Developer Program. I actively bridge the
-            gap between CS theory and practical execution — most recently through the
-            Smart Library Management System, an AWS-hosted platform handling everything
-            from authentication to overdue book tracking.
-          </p>
-          <p>
-            My toolkit spans Python, C++, Java, PHP, JavaScript, SQL, Dart, and Node.js.
-            Beyond traditional software development, I'm a continuous learner driven by
-            analytical curiosity — currently expanding into systems-level engineering.
-          </p>
-        </section>
+        <About />
 
         <section id="skills" className="skills">
           <p className="section-label">02 — Skills</p>
