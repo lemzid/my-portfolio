@@ -457,3 +457,14 @@ body {
   /* a flat semi-transparent blue, rather than a gradient —
      keeps mini-cards visually "one step down" from the main Projects cards */
 }
+
+/* :focus-visible only shows this outline for keyboard users (Tab key),
+   not for mouse clicks — so it won't clutter the design for most visitors,
+   but it's there when someone actually needs it. */
+.quick-pill:focus-visible,
+.social-pill:focus-visible,
+.nav-links a:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
