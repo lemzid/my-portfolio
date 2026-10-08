@@ -33,7 +33,7 @@ function Library() {
           <span className="stack-pill">CloudWatch</span>
         </div>
 
-        <h3>What was hard</h3>
+        
 
        <h3>What was hard</h3>
 
